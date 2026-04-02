@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What Is It? — Sahil-Code</title>
-  <meta name="description" content="See what Sahil-Code can do. Interactive demos of the model-agnostic AI coding agent.">
+  <meta name="description" content="See what Sahil-Code can do. Feature walkthrough of the model-agnostic AI coding agent.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="bg-decoration">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
+    <div class="bg-grain"></div>
+    <div class="bg-gradient bg-gradient-1"></div>
+    <div class="bg-gradient bg-gradient-2"></div>
   </div>
 
   <nav>
@@ -28,8 +27,8 @@
         <a href="/">Home</a>
         <a href="/what-is-it" class="active">What Is It?</a>
         <a href="/docs">Docs</a>
-        <a href="https://github.com/SahilBamb/sahil-code" class="btn btn-ghost btn-sm">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <a href="https://github.com/SahilBamb/sahil-code" class="btn btn-secondary btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
@@ -39,17 +38,16 @@
   <section class="page-hero container">
     <div class="badge">Feature Walkthrough</div>
     <h1>What is <span class="gradient">Sahil-Code</span>?</h1>
-    <p>An AI coding agent that lives in your terminal. It reads, writes, and edits code using any LLM you choose. Here's what each part does.</p>
+    <p>An AI coding agent that lives in your terminal. It reads, writes, and edits code using any LLM you choose.</p>
   </section>
 
   <section class="demo-section container">
 
-    <!-- 1. The Agent Loop -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>The Conversation Loop</h3>
-          <p>At its core, sahil-code is an agentic loop. You give it a task in natural language, and it plans, executes tools, and iterates until the job is done. The agent decides which tools to call, interprets results, and handles errors autonomously.</p>
+          <p>Give it a task in natural language. The agent plans, selects tools, executes, interprets results, and iterates until the job is done.</p>
           <ul>
             <li>Multi-turn conversation with full context</li>
             <li>Automatic tool selection and chaining</li>
@@ -64,17 +62,16 @@
       </div>
     </div>
 
-    <!-- 2. Tool System -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>The Tool System</h3>
-          <p>10 built-in tools give the agent hands to work with your codebase. Each tool produces structured JSON output with metadata like duration, byte counts, and line numbers.</p>
+          <p>10 built-in tools give the agent hands to work with your codebase. Each produces structured JSON output with metadata.</p>
           <ul>
-            <li><code>bash</code> &mdash; Run shell commands with timeouts and background mode</li>
-            <li><code>read_file</code> / <code>write_file</code> / <code>edit_file</code> &mdash; Precise file operations</li>
+            <li><code>bash</code> &mdash; Shell commands with timeouts and background mode</li>
+            <li><code>read_file</code> / <code>write_file</code> / <code>edit_file</code> &mdash; Precise file ops</li>
             <li><code>glob_search</code> / <code>grep_search</code> &mdash; Find files and content</li>
-            <li><code>list_directory</code> / <code>diff_files</code> / <code>web_fetch</code> &mdash; Explore and compare</li>
+            <li><code>list_directory</code> / <code>diff_files</code> / <code>web_fetch</code></li>
           </ul>
         </div>
         <div class="demo-placeholder">
@@ -84,16 +81,15 @@
       </div>
     </div>
 
-    <!-- 3. Provider Switching -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Any Model, One Interface</h3>
-          <p>Swap between Anthropic Claude, OpenAI GPT, local Ollama models, or any OpenAI-compatible API with a single flag. The same tools, the same conversation format, the same workflow.</p>
+          <p>Swap between Anthropic Claude, OpenAI GPT, local Ollama models, or any compatible API with a single flag.</p>
           <ul>
             <li><code>--provider anthropic</code> with automatic key detection</li>
-            <li><code>--provider ollama</code> for fully local, private coding</li>
-            <li>Fallback chains: try Claude first, fall back to GPT on failure</li>
+            <li><code>--provider ollama</code> for local, private coding</li>
+            <li>Fallback chains: try Claude first, fall back to GPT</li>
             <li>Per-model cost tracking and capability detection</li>
           </ul>
         </div>
@@ -104,12 +100,11 @@
       </div>
     </div>
 
-    <!-- 4. Safety & Permissions -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Safety &amp; Permissions</h3>
-          <p>You decide what the agent can do. The permission system ranges from fully autonomous to interactive approval for every action. A filesystem sandbox prevents path traversal, and dangerous commands are blocked by default.</p>
+          <p>You decide what the agent can do. The permission system ranges from fully autonomous to interactive approval for every action.</p>
           <ul>
             <li>Three modes: <code>allow-all</code>, <code>read-only</code>, <code>prompt</code></li>
             <li>Filesystem sandbox restricts operations to your project</li>
@@ -124,17 +119,16 @@
       </div>
     </div>
 
-    <!-- 5. Session Management -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Sessions &amp; History</h3>
-          <p>Every conversation is automatically saved. Resume where you left off, browse history, export as markdown or HTML, and share your sessions with teammates.</p>
+          <p>Every conversation is automatically saved. Resume where you left off, browse history, export and share sessions.</p>
           <ul>
             <li>Auto-save after every turn to <code>~/.claw/sessions/</code></li>
             <li><code>--resume last</code> picks up your most recent session</li>
             <li>Automatic compaction keeps context windows efficient</li>
-            <li>Export as styled HTML or markdown for documentation</li>
+            <li>Export as styled HTML or markdown</li>
           </ul>
         </div>
         <div class="demo-placeholder">
@@ -144,16 +138,15 @@
       </div>
     </div>
 
-    <!-- 6. Plugin System -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Plugins &amp; Extensions</h3>
-          <p>Add new tools, connect to MCP servers, and hook into the execution pipeline. The plugin system makes sahil-code infinitely extensible without modifying core code.</p>
+          <p>Add new tools, connect to MCP servers, and hook into the execution pipeline without modifying core code.</p>
           <ul>
             <li>Drop-in plugin directories with <code>plugin.json</code> manifests</li>
             <li>MCP client for connecting to external tool servers</li>
-            <li>Pre/post hooks for custom logic around tool execution</li>
+            <li>Pre/post hooks for custom logic around execution</li>
             <li>Bundled skills: verify, commit, refactor, explain</li>
           </ul>
         </div>
@@ -164,17 +157,16 @@
       </div>
     </div>
 
-    <!-- 7. Multi-Agent -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Multi-Agent Orchestration</h3>
-          <p>For complex tasks, spawn sub-agents that work in parallel on different parts of your codebase. The orchestrator manages coordination, file locks, and result aggregation.</p>
+          <p>Spawn sub-agents that work in parallel on different parts of your codebase. The orchestrator manages coordination and results.</p>
           <ul>
             <li>Sub-agent spawning with independent token budgets</li>
             <li>Parallel task execution across files</li>
             <li>File lock management to prevent conflicts</li>
-            <li>Plan-execute pattern for structured multi-step work</li>
+            <li>Plan-execute pattern for structured work</li>
           </ul>
         </div>
         <div class="demo-placeholder">
@@ -184,14 +176,13 @@
       </div>
     </div>
 
-    <!-- 8. Terminal UX -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Rich Terminal Experience</h3>
-          <p>More than a plain text interface. Syntax-highlighted markdown, bordered tool panels, contextual progress spinners, input history, and even vim keybindings for power users.</p>
+          <p>Syntax-highlighted markdown, bordered tool panels, contextual spinners, input history, and vim keybindings.</p>
           <ul>
-            <li>Markdown rendering with <code>pulldown-cmark</code> + <code>syntect</code></li>
+            <li>Markdown rendering with syntax highlighting</li>
             <li>Bordered panels for tool input/output</li>
             <li>Vim mode with normal/insert/visual and motions</li>
             <li>Line editor with history recall and cursor movement</li>
@@ -204,12 +195,11 @@
       </div>
     </div>
 
-    <!-- 9. CI / Headless -->
-    <div class="demo-card glass">
+    <div class="demo-card">
       <div class="demo-row">
         <div class="demo-text">
           <h3>Headless &amp; CI Mode</h3>
-          <p>Run sahil-code in CI/CD pipelines with no interactive input. It outputs structured JSON, auto-approves tools, and exits with appropriate status codes. Pair it with the HTTP API server for remote access.</p>
+          <p>Run in CI/CD pipelines with no interactive input. Structured JSON output, auto-approved tools, and appropriate exit codes.</p>
           <ul>
             <li><code>--headless "fix linter errors"</code> for CI pipelines</li>
             <li>Structured JSON output for machine consumption</li>
@@ -227,17 +217,17 @@
   </section>
 
   <section class="container" style="padding: 0 0 100px;">
-    <div class="cta-card glass">
+    <div class="cta-card">
       <h2>Ready to try it?</h2>
       <p>Clone, build, and start coding with AI in under a minute.</p>
       <div class="cta-actions">
         <a href="https://github.com/SahilBamb/sahil-code" class="btn btn-primary">Get the Code</a>
-        <a href="/docs" class="btn btn-ghost">Read the Docs</a>
+        <a href="/docs" class="btn btn-secondary">Read the Docs</a>
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="container">
     <p>Built by <a href="https://github.com/SahilBamb">Sahil Bamb</a> &middot; Open source under MIT</p>
   </footer>
 </body>
