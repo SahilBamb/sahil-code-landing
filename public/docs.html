@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation — Sahil-Code</title>
+  <meta name="description" content="Complete documentation for Sahil-Code, the model-agnostic AI coding agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <nav>
+    <div class="nav-inner glass">
+      <a href="/" class="logo">
+        <div class="logo-icon">S</div>
+        sahil-code
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/what-is-it">What Is It?</a>
+        <a href="/docs" class="active">Docs</a>
+        <a href="https://github.com/SahilBamb/sahil-code" class="btn btn-ghost btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero container">
+    <h1>Documentation</h1>
+    <p>Everything you need to know about installing, configuring, and extending sahil-code.</p>
+  </section>
+
+  <div class="container-wide">
+    <div class="docs-layout">
+
+      <!-- Sidebar -->
+      <aside class="docs-sidebar glass" style="padding: 20px 8px;">
+        <div class="sidebar-section">Getting Started</div>
+        <ul>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#quickstart">Quick Start</a></li>
+          <li><a href="#cli-reference">CLI Reference</a></li>
+        </ul>
+        <div class="sidebar-section">Core Concepts</div>
+        <ul>
+          <li><a href="#conversation-runtime">Conversation Runtime</a></li>
+          <li><a href="#providers">Providers</a></li>
+          <li><a href="#tool-system">Tool System</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+        </ul>
+        <div class="sidebar-section">Tools</div>
+        <ul>
+          <li><a href="#tool-bash">bash</a></li>
+          <li><a href="#tool-read-file">read_file</a></li>
+          <li><a href="#tool-write-file">write_file</a></li>
+          <li><a href="#tool-edit-file">edit_file</a></li>
+          <li><a href="#tool-glob-search">glob_search</a></li>
+          <li><a href="#tool-grep-search">grep_search</a></li>
+          <li><a href="#tool-list-directory">list_directory</a></li>
+          <li><a href="#tool-diff-files">diff_files</a></li>
+          <li><a href="#tool-web-fetch">web_fetch</a></li>
+        </ul>
+        <div class="sidebar-section">Configuration</div>
+        <ul>
+          <li><a href="#config-system">Layered Config</a></li>
+          <li><a href="#project-instructions">Project Instructions</a></li>
+          <li><a href="#git-context">Git Context</a></li>
+        </ul>
+        <div class="sidebar-section">Advanced</div>
+        <ul>
+          <li><a href="#sessions">Sessions</a></li>
+          <li><a href="#compaction">Compaction</a></li>
+          <li><a href="#cost-tracking">Cost Tracking</a></li>
+          <li><a href="#safety">Safety &amp; Sandboxing</a></li>
+          <li><a href="#plugins">Plugins</a></li>
+          <li><a href="#multi-agent">Multi-Agent</a></li>
+          <li><a href="#server-api">Server &amp; API</a></li>
+          <li><a href="#ide-integration">IDE Integration</a></li>
+        </ul>
+        <div class="sidebar-section">Architecture</div>
+        <ul>
+          <li><a href="#architecture">Crate Structure</a></li>
+        </ul>
+      </aside>
+
+      <!-- Content -->
+      <main class="docs-content">
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- GETTING STARTED -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="installation">
+          <h2>Installation</h2>
+          <p>Sahil-code requires Rust 1.75+ and Cargo. Clone the repo and build:</p>
+          <pre><code>git clone https://github.com/SahilBamb/sahil-code
+cd sahil-code
+cargo build --release</code></pre>
+          <p>The binary will be at <code>target/release/claw</code>. Add it to your PATH or symlink it:</p>
+          <pre><code>sudo ln -s $(pwd)/target/release/claw /usr/local/bin/claw</code></pre>
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>Rust 1.75+ (install via <a href="https://rustup.rs" style="color: var(--accent);">rustup</a>)</li>
+            <li>An API key for at least one provider (Anthropic, OpenAI, or a running Ollama instance)</li>
+          </ul>
+        </section>
+
+        <section id="quickstart">
+          <h2>Quick Start</h2>
+          <p>Set your API key and start the interactive REPL:</p>
+          <pre><code>export ANTHROPIC_API_KEY="sk-ant-..."
+claw</code></pre>
+          <p>Or send a single prompt:</p>
+          <pre><code>claw prompt "add error handling to the parse function in src/parser.rs"</code></pre>
+          <p>Or use a different provider:</p>
+          <pre><code>export OPENAI_API_KEY="sk-..."
+claw --provider openai --model gpt-4o prompt "explain this codebase"</code></pre>
+          <div class="info-box">Sahil-code auto-detects your provider based on which API key environment variable is set. If <code>ANTHROPIC_API_KEY</code> is present, it defaults to Anthropic. If <code>OPENAI_API_KEY</code> is present, it defaults to OpenAI. If <code>OLLAMA_HOST</code> is set, it defaults to Ollama.</div>
+        </section>
+
+        <section id="cli-reference">
+          <h2>CLI Reference</h2>
+          <h3>Subcommands &amp; Flags</h3>
+          <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><code>claw</code></td><td>Start interactive REPL</td></tr>
+            <tr><td><code>claw prompt TEXT</code></td><td>Send a single prompt and exit</td></tr>
+            <tr><td><code>claw serve [PORT]</code></td><td>Start HTTP API server (default port 8080)</td></tr>
+            <tr><td><code>claw export PATH [--format html|md]</code></td><td>Export a saved session</td></tr>
+            <tr><td><code>--provider NAME</code></td><td><code>anthropic</code>, <code>openai</code>, or <code>ollama</code></td></tr>
+            <tr><td><code>--model NAME</code></td><td>Model identifier (e.g., <code>claude-sonnet-4-20250514</code>)</td></tr>
+            <tr><td><code>--base-url URL</code></td><td>Override API base URL</td></tr>
+            <tr><td><code>--max-tokens N</code></td><td>Max tokens per response (default 4096)</td></tr>
+            <tr><td><code>--resume PATH|last</code></td><td>Resume a saved session</td></tr>
+            <tr><td><code>--output-format text|json|ndjson</code></td><td>Output format</td></tr>
+            <tr><td><code>--headless "PROMPT"</code></td><td>Non-interactive CI mode</td></tr>
+            <tr><td><code>--max-turns N</code></td><td>Max turns in headless mode (default 10)</td></tr>
+          </table>
+
+          <h3>REPL Commands</h3>
+          <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><code>/help</code></td><td>Show available commands</td></tr>
+            <tr><td><code>/status</code></td><td>Session stats (messages, tokens, path)</td></tr>
+            <tr><td><code>/compact</code></td><td>Compact conversation history</td></tr>
+            <tr><td><code>/save</code></td><td>Explicitly save the current session</td></tr>
+            <tr><td><code>/history</code></td><td>List saved sessions</td></tr>
+            <tr><td><code>/cost</code></td><td>Show accumulated cost breakdown</td></tr>
+            <tr><td><code>/export md</code></td><td>Export current session as markdown</td></tr>
+            <tr><td><code>/export html</code></td><td>Export current session as HTML</td></tr>
+            <tr><td><code>/vim</code></td><td>Toggle vim keybindings</td></tr>
+            <tr><td><code>/exit</code></td><td>Quit</td></tr>
+          </table>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- CORE CONCEPTS -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="conversation-runtime">
+          <h2>Conversation Runtime</h2>
+          <p>The <code>ConversationRuntime</code> is the central engine. It manages the message loop between the user, the LLM, and the tool executor. Each "turn" follows this cycle:</p>
+          <ol>
+            <li>User message is added to the session</li>
+            <li>Full message history + system prompt is sent to the API provider</li>
+            <li>The LLM responds with text and/or tool calls</li>
+            <li>Tool calls are checked against the permission policy</li>
+            <li>Approved tools are executed, results appended to the session</li>
+            <li>If there were tool calls, the loop repeats (up to <code>max_iterations</code>)</li>
+            <li>When the LLM responds with only text (no tool calls), the turn ends</li>
+          </ol>
+          <p>The runtime is generic over both the API client and the tool executor, which is how the same core logic works across all providers and tool implementations.</p>
+          <pre><code>pub struct ConversationRuntime&lt;C, T&gt; {
+    session: Session,
+    api_client: C,          // implements ApiClient trait
+    tool_executor: T,       // implements ToolExecutor trait
+    permission_policy: PermissionPolicy,
+    system_prompt: Vec&lt;String&gt;,
+    max_iterations: usize,  // default: 16
+    usage_tracker: UsageTracker,
+}</code></pre>
+        </section>
+
+        <section id="providers">
+          <h2>Providers</h2>
+          <p>Sahil-code abstracts LLM providers behind the <code>ApiClient</code> trait. Any provider that implements this trait can be plugged into the conversation runtime.</p>
+
+          <h3>Anthropic</h3>
+          <p>Uses the Messages API with streaming via SSE. Supports Claude 3.5 Sonnet, Claude 3 Opus, and all Anthropic models. Set <code>ANTHROPIC_API_KEY</code> to enable.</p>
+
+          <h3>OpenAI</h3>
+          <p>Uses the Chat Completions API with streaming. Works with GPT-4o, GPT-4, and any OpenAI-compatible endpoint (like Azure, Together, Groq). Set <code>OPENAI_API_KEY</code> to enable.</p>
+
+          <h3>Ollama</h3>
+          <p>Native integration with Ollama's <code>/api/chat</code> endpoint. Run models locally with zero API costs. Set <code>OLLAMA_HOST</code> (defaults to <code>http://localhost:11434</code>).</p>
+
+          <h3>Fallback Chains</h3>
+          <p>Configure a fallback provider that activates when the primary fails (rate limits, outages). The <code>FallbackProvider</code> wraps multiple <code>ApiClient</code> instances and tries them in order.</p>
+
+          <h3>Capability Detection</h3>
+          <p>The <code>detect_capabilities</code> function returns a <code>ModelCapabilities</code> struct for any model, reporting:</p>
+          <ul>
+            <li><code>supports_tools</code> &mdash; whether the model can handle tool call schemas</li>
+            <li><code>supports_streaming</code> &mdash; whether SSE streaming is available</li>
+            <li><code>context_window</code> &mdash; max input tokens (e.g., 200K for Claude 3.5)</li>
+            <li><code>max_output_tokens</code> &mdash; max generation length</li>
+          </ul>
+        </section>
+
+        <section id="tool-system">
+          <h2>Tool System</h2>
+          <p>Tools are the agent's hands. Each tool implements the <code>Tool</code> trait:</p>
+          <pre><code>pub trait Tool: Send + Sync {
+    fn spec(&amp;self) -&gt; ToolSpec;
+    fn execute(&amp;self, input: &amp;Value) -&gt; Result&lt;ToolOutput, String&gt;;
+}</code></pre>
+          <p>Tools are managed by a <code>ToolRegistry</code> which supports dynamic registration. The default registry includes all 9 built-in tools plus any plugins.</p>
+
+          <h3>Structured Output</h3>
+          <p>Every tool returns a <code>ToolOutput</code> with a <code>content</code> string and optional <code>metadata</code> (JSON). This allows machine-readable data alongside human-readable summaries.</p>
+
+          <h3>Middleware Stack</h3>
+          <p>Tool execution flows through a middleware pipeline. Pre-hooks run before execution (can block), post-hooks run after (can transform output). The built-in <code>TimingHook</code> adds <code>duration_ms</code> to every tool result.</p>
+          <pre><code>pub trait PreHook: Send + Sync {
+    fn before(&amp;self, tool_name: &amp;str, input: &amp;Value) -&gt; HookResult;
+}
+
+pub trait PostHook: Send + Sync {
+    fn after(&amp;self, tool_name: &amp;str, output: &amp;mut ToolOutput);
+}</code></pre>
+        </section>
+
+        <section id="permissions">
+          <h2>Permissions</h2>
+          <p>The permission system controls what the agent can do. Set via the <code>CLAW_PERMISSION_MODE</code> environment variable:</p>
+          <table>
+            <tr><th>Mode</th><th>Behavior</th></tr>
+            <tr><td><code>allow-all</code></td><td>All tools execute without prompting (default)</td></tr>
+            <tr><td><code>read-only</code></td><td>Only read_file, glob_search, grep_search are allowed; everything else is denied</td></tr>
+            <tr><td><code>prompt</code></td><td>Each tool call prompts for interactive approval: allow, deny, or allow for session</td></tr>
+          </table>
+          <p>Per-tool overrides are supported via <code>PermissionPolicy::with_tool_mode()</code>, allowing fine-grained control like "allow all reads, prompt for writes, deny bash".</p>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- TOOLS -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="tool-bash">
+          <h2>bash</h2>
+          <p>Execute shell commands with full timeout enforcement and background execution support.</p>
+          <h3>Parameters</h3>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>command</code></td><td>string</td><td>Yes</td><td>The shell command to run</td></tr>
+            <tr><td><code>timeout</code></td><td>integer</td><td>No</td><td>Timeout in seconds (default: 30)</td></tr>
+            <tr><td><code>run_in_background</code></td><td>boolean</td><td>No</td><td>If true, spawn and return PID immediately</td></tr>
+          </table>
+          <h3>Output</h3>
+          <p>Returns stdout, stderr, exit code, duration in milliseconds, and an <code>interrupted</code> flag if the timeout was hit. Background commands return only the PID.</p>
+        </section>
+
+        <section id="tool-read-file">
+          <h2>read_file</h2>
+          <p>Read file contents with optional line range selection.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>path</code></td><td>string</td><td>Yes</td><td>File path to read</td></tr>
+            <tr><td><code>offset</code></td><td>integer</td><td>No</td><td>Starting line number (1-based)</td></tr>
+            <tr><td><code>limit</code></td><td>integer</td><td>No</td><td>Maximum number of lines to return</td></tr>
+          </table>
+        </section>
+
+        <section id="tool-write-file">
+          <h2>write_file</h2>
+          <p>Create or overwrite a file. Automatically creates parent directories.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>path</code></td><td>string</td><td>Yes</td><td>File path to write</td></tr>
+            <tr><td><code>content</code></td><td>string</td><td>Yes</td><td>Full file content</td></tr>
+          </table>
+        </section>
+
+        <section id="tool-edit-file">
+          <h2>edit_file</h2>
+          <p>Surgical string replacement within a file. Requires <code>old_string</code> to be unique in the file (unless <code>replace_all</code> is set).</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>path</code></td><td>string</td><td>Yes</td><td>File path to edit</td></tr>
+            <tr><td><code>old_string</code></td><td>string</td><td>Yes</td><td>The text to find and replace</td></tr>
+            <tr><td><code>new_string</code></td><td>string</td><td>Yes</td><td>Replacement text</td></tr>
+            <tr><td><code>replace_all</code></td><td>boolean</td><td>No</td><td>Replace all occurrences (default: false)</td></tr>
+          </table>
+        </section>
+
+        <section id="tool-glob-search">
+          <h2>glob_search</h2>
+          <p>Find files matching a glob pattern. Searches recursively from the given path.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>pattern</code></td><td>string</td><td>Yes</td><td>Glob pattern (e.g., <code>**/*.rs</code>)</td></tr>
+            <tr><td><code>path</code></td><td>string</td><td>No</td><td>Root directory to search from (default: <code>.</code>)</td></tr>
+          </table>
+        </section>
+
+        <section id="tool-grep-search">
+          <h2>grep_search</h2>
+          <p>Search file contents by regex with optional context lines, case sensitivity, and glob filtering.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>pattern</code></td><td>string</td><td>Yes</td><td>Regex pattern to search for</td></tr>
+            <tr><td><code>path</code></td><td>string</td><td>No</td><td>Directory to search (default: <code>.</code>)</td></tr>
+            <tr><td><code>include</code></td><td>string</td><td>No</td><td>Glob filter for filenames (e.g., <code>*.rs</code>)</td></tr>
+            <tr><td><code>case_insensitive</code></td><td>boolean</td><td>No</td><td>Case-insensitive matching</td></tr>
+            <tr><td><code>context_lines</code></td><td>integer</td><td>No</td><td>Lines of context before/after each match</td></tr>
+          </table>
+          <p>Output includes file path, line number, matched content, and context lines (as <code>context_before</code> and <code>context_after</code> arrays).</p>
+        </section>
+
+        <section id="tool-list-directory">
+          <h2>list_directory</h2>
+          <p>List directory contents with type information and optional recursive traversal.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>path</code></td><td>string</td><td>Yes</td><td>Directory to list</td></tr>
+            <tr><td><code>recursive</code></td><td>boolean</td><td>No</td><td>Recurse into subdirectories</td></tr>
+            <tr><td><code>max_depth</code></td><td>integer</td><td>No</td><td>Maximum recursion depth</td></tr>
+          </table>
+          <p>Returns structured entries with <code>name</code>, <code>type</code> (file/directory), and <code>size</code> for files.</p>
+        </section>
+
+        <section id="tool-diff-files">
+          <h2>diff_files</h2>
+          <p>Compare two files and produce a unified diff.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>file_a</code></td><td>string</td><td>Yes</td><td>First file path</td></tr>
+            <tr><td><code>file_b</code></td><td>string</td><td>Yes</td><td>Second file path</td></tr>
+            <tr><td><code>context_lines</code></td><td>integer</td><td>No</td><td>Lines of context around changes (default: 3)</td></tr>
+          </table>
+        </section>
+
+        <section id="tool-web-fetch">
+          <h2>web_fetch</h2>
+          <p>Fetch the content of a URL via HTTP GET.</p>
+          <table>
+            <tr><th>Param</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td><code>url</code></td><td>string</td><td>Yes</td><td>URL to fetch</td></tr>
+            <tr><td><code>timeout</code></td><td>integer</td><td>No</td><td>Timeout in seconds (default: 30)</td></tr>
+            <tr><td><code>max_length</code></td><td>integer</td><td>No</td><td>Max response body length in bytes</td></tr>
+          </table>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- CONFIGURATION -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="config-system">
+          <h2>Layered Configuration</h2>
+          <p>Configuration is loaded from three layers, with later layers overriding earlier ones:</p>
+          <ol>
+            <li><code>~/.claw/config.json</code> &mdash; User-global defaults</li>
+            <li><code>.claw/config.json</code> &mdash; Project-level settings (committed to repo)</li>
+            <li><code>.claw/config.local.json</code> &mdash; Local overrides (gitignored)</li>
+          </ol>
+          <h3>Config Fields</h3>
+          <pre><code>{
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-20250514",
+  "base_url": "https://api.anthropic.com",
+  "max_tokens": 4096,
+  "permission_mode": "allow-all"
+}</code></pre>
+          <p>CLI flags always take precedence over config files. Environment variables take precedence over config files but are overridden by CLI flags.</p>
+        </section>
+
+        <section id="project-instructions">
+          <h2>Project Instructions</h2>
+          <p>Sahil-code automatically discovers instruction files from the current directory and its ancestors:</p>
+          <ul>
+            <li><code>AGENTS.md</code></li>
+            <li><code>CLAUDE.md</code></li>
+            <li><code>.claw/instructions.md</code></li>
+          </ul>
+          <p>These files are appended to the system prompt, giving the model awareness of your project's conventions, architecture, and preferences. Write them in markdown with coding standards, architecture decisions, and things the agent should know.</p>
+        </section>
+
+        <section id="git-context">
+          <h2>Git Context Injection</h2>
+          <p>If the current directory is a git repository, sahil-code automatically runs <code>git status --short</code> and <code>git diff --stat</code> and injects the output into the system prompt. This gives the agent awareness of:</p>
+          <ul>
+            <li>Current branch</li>
+            <li>Uncommitted changes</li>
+            <li>Staged files</li>
+            <li>Changed file statistics</li>
+          </ul>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- ADVANCED -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="sessions">
+          <h2>Sessions</h2>
+          <p>Every conversation is a <code>Session</code> &mdash; a vector of <code>ConversationMessage</code> objects. Sessions are auto-saved to <code>~/.claw/sessions/{id}.json</code> after each turn.</p>
+
+          <h3>Resuming Sessions</h3>
+          <pre><code># Resume the most recent session
+claw --resume last
+
+# Resume a specific session
+claw --resume ~/.claw/sessions/1234567890-42.json</code></pre>
+
+          <h3>Exporting Sessions</h3>
+          <pre><code># Export as markdown
+claw export ~/.claw/sessions/1234.json --format md
+
+# Export as self-contained HTML
+claw export ~/.claw/sessions/1234.json --format html
+
+# Export from the REPL
+/export md
+/export html</code></pre>
+        </section>
+
+        <section id="compaction">
+          <h2>Compaction</h2>
+          <p>As conversations grow, they can exceed the model's context window. Compaction summarizes older messages to free up space while preserving essential context.</p>
+          <p><strong>Automatic compaction</strong> triggers after each turn if <code>should_compact()</code> returns true (i.e., estimated tokens exceed the threshold). <strong>Manual compaction</strong> is available via the <code>/compact</code> REPL command.</p>
+          <p>Compaction preserves the most recent messages and replaces older ones with a summary. The <code>CompactionConfig</code> controls the token threshold and how many recent messages to keep.</p>
+        </section>
+
+        <section id="cost-tracking">
+          <h2>Cost Tracking</h2>
+          <p>The <code>CostTracker</code> estimates costs based on model-specific pricing (input tokens, output tokens, cached tokens). It tracks per-turn and cumulative session costs.</p>
+          <pre><code># In the REPL
+/cost
+
+# Output:
+# Model: claude-sonnet-4-20250514
+# Turns: 5
+# Total: $0.0342 (input: $0.0198, output: $0.0144)</code></pre>
+          <p>Pricing is built-in for major models. Unknown models default to $0 (useful for local Ollama models).</p>
+        </section>
+
+        <section id="safety">
+          <h2>Safety &amp; Sandboxing</h2>
+
+          <h3>Filesystem Sandbox</h3>
+          <p>The <code>FilesystemSandbox</code> restricts all file operations to a configurable root directory (default: CWD). Paths with <code>..</code> traversal or symlinks that escape the sandbox are rejected. This prevents the agent from reading or modifying files outside your project.</p>
+
+          <h3>Bash Command Policy</h3>
+          <p>The <code>BashPolicy</code> blocks dangerous command patterns by default:</p>
+          <ul>
+            <li><code>rm -rf /</code>, <code>rm -rf ~</code></li>
+            <li><code>sudo</code></li>
+            <li><code>curl | sh</code>, <code>wget | sh</code></li>
+            <li><code>mkfs</code>, <code>dd if=</code></li>
+            <li><code>:(){ :|:& };</code> (fork bombs)</li>
+          </ul>
+          <p>Custom blocked patterns can be added via <code>BashPolicy::custom()</code>.</p>
+
+          <h3>Audit Trail</h3>
+          <p>The <code>AuditLog</code> records every tool execution to a JSONL file at <code>~/.claw/audit/</code>. Each entry includes the tool name, input, output, duration, and timestamp.</p>
+
+          <h3>Rate Limiting</h3>
+          <p>The <code>RateLimiter</code> enforces:</p>
+          <ul>
+            <li>Max tool calls per session (default: 200)</li>
+            <li>Max tokens per session (configurable)</li>
+          </ul>
+
+          <h3>Undo / Rollback</h3>
+          <p>The <code>UndoStack</code> saves file contents before <code>write_file</code> or <code>edit_file</code> operations. The <code>/undo</code> command restores the previous state. For newly created files, undo removes them entirely.</p>
+        </section>
+
+        <section id="plugins">
+          <h2>Plugins</h2>
+
+          <h3>Plugin Format</h3>
+          <p>Plugins are directories with a <code>plugin.json</code> manifest:</p>
+          <pre><code>{
+  "name": "my-plugin",
+  "version": "0.1.0",
+  "description": "A custom tool plugin",
+  "tools": [
+    {
+      "name": "my_tool",
+      "description": "Does something useful",
+      "parameters": { "type": "object", "properties": { ... } }
+    }
+  ],
+  "hooks": ["tool:before", "tool:after"]
+}</code></pre>
+
+          <h3>Plugin Discovery</h3>
+          <p>Plugins are loaded from <code>~/.claw/plugins/</code> and <code>.claw/plugins/</code>. The <code>PluginLoader</code> scans these directories for valid <code>plugin.json</code> files and registers their tools into the <code>ToolRegistry</code>.</p>
+
+          <h3>MCP Client</h3>
+          <p>The built-in MCP (Model Context Protocol) client connects to external tool servers via JSON-RPC over stdin/stdout. Start an MCP server and sahil-code can discover and use its tools automatically.</p>
+
+          <h3>Hook System</h3>
+          <p>The <code>HookRegistry</code> supports event-driven hooks:</p>
+          <ul>
+            <li><code>tool:before</code> &mdash; fires before any tool execution</li>
+            <li><code>tool:after</code> &mdash; fires after any tool execution</li>
+          </ul>
+          <p>Register callbacks that receive the tool name and input/output, enabling custom logging, transformation, or validation logic.</p>
+
+          <h3>Bundled Skills</h3>
+          <p>Skills are higher-level capabilities built on tools:</p>
+          <ul>
+            <li><strong>verify</strong> &mdash; Run tests and report results</li>
+            <li><strong>commit</strong> &mdash; Stage and commit with a generated message</li>
+            <li><strong>refactor</strong> &mdash; Multi-file refactoring with validation</li>
+            <li><strong>explain</strong> &mdash; Deep code explanation with references</li>
+          </ul>
+        </section>
+
+        <section id="multi-agent">
+          <h2>Multi-Agent Orchestration</h2>
+          <p>For complex tasks, the <code>AgentOrchestrator</code> manages multiple sub-agents working in parallel.</p>
+
+          <h3>Sub-Agent Tasks</h3>
+          <p>Each <code>AgentTask</code> has its own description, tool whitelist, and token budget. The orchestrator tracks task status (Pending, Running, Complete, Failed) and collects results.</p>
+
+          <h3>File Locks</h3>
+          <p>The <code>FileLockManager</code> prevents concurrent modification conflicts when multiple agents work on overlapping files. Agents acquire locks before editing and release them when done.</p>
+
+          <h3>Agent Communication</h3>
+          <p>Agents communicate via structured <code>AgentMessage</code> variants:</p>
+          <ul>
+            <li><code>Progress</code> &mdash; "editing file 3 of 7"</li>
+            <li><code>Clarification</code> &mdash; escalated to the user</li>
+            <li><code>FileLock</code> / <code>FileUnlock</code> &mdash; coordinate shared resources</li>
+            <li><code>Complete</code> &mdash; task finished with summary</li>
+          </ul>
+
+          <h3>Plan-Execute Pattern</h3>
+          <p>Structured multi-step execution: define a <code>Plan</code> with ordered <code>PlanStep</code>s, review it, then execute step-by-step. Each step tracks its status (Pending, InProgress, Done, Skipped) and output.</p>
+        </section>
+
+        <section id="server-api">
+          <h2>Server &amp; API</h2>
+
+          <h3>HTTP API</h3>
+          <p>Start the API server with <code>claw serve --port 8080</code>. Endpoints:</p>
+          <table>
+            <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+            <tr><td>POST</td><td><code>/sessions</code></td><td>Create a new session</td></tr>
+            <tr><td>POST</td><td><code>/sessions/{id}/turns</code></td><td>Send a message (SSE response)</td></tr>
+            <tr><td>GET</td><td><code>/sessions/{id}</code></td><td>Get session state</td></tr>
+            <tr><td>DELETE</td><td><code>/sessions/{id}</code></td><td>Delete session</td></tr>
+          </table>
+
+          <h3>SSE Streaming</h3>
+          <p>The <code>/turns</code> endpoint streams events using Server-Sent Events:</p>
+          <ul>
+            <li><code>text_delta</code> &mdash; Incremental text from the assistant</li>
+            <li><code>tool_start</code> &mdash; Tool execution began</li>
+            <li><code>tool_end</code> &mdash; Tool execution completed</li>
+            <li><code>done</code> &mdash; Turn complete with usage summary</li>
+          </ul>
+
+          <h3>WebSocket</h3>
+          <p>Bidirectional communication at <code>/sessions/{id}/ws</code>. The client sends <code>WsClientMessage</code> (user messages, tool approvals, cancel), the server sends <code>WsServerMessage</code> (text deltas, tool events, approval requests).</p>
+
+          <h3>Headless / CI Mode</h3>
+          <pre><code>claw --headless --max-turns 5 "fix all linter errors in src/"</code></pre>
+          <p>Runs without interactive input. Auto-approves all tools. Outputs a JSON <code>HeadlessResult</code> to stdout with:</p>
+          <ul>
+            <li><code>success</code> &mdash; boolean</li>
+            <li><code>assistant_text</code> &mdash; final assistant output</li>
+            <li><code>tool_calls</code> &mdash; array of tool call summaries</li>
+            <li><code>total_tokens</code> &mdash; tokens consumed</li>
+            <li><code>turns</code> &mdash; number of turns executed</li>
+          </ul>
+          <p>Exit code 0 on success, non-zero on failure.</p>
+        </section>
+
+        <section id="ide-integration">
+          <h2>IDE Integration</h2>
+
+          <h3>JSON-RPC Protocol</h3>
+          <p>Sahil-code defines an LSP-inspired JSON-RPC protocol for editor integration:</p>
+          <table>
+            <tr><th>Method</th><th>Description</th></tr>
+            <tr><td><code>initialize</code></td><td>Initialize with workspace path and capabilities</td></tr>
+            <tr><td><code>claw/sendMessage</code></td><td>Send a user message to the agent</td></tr>
+            <tr><td><code>claw/getSession</code></td><td>Retrieve current session state</td></tr>
+            <tr><td><code>claw/listTools</code></td><td>List available tools and their schemas</td></tr>
+            <tr><td><code>claw/approveTool</code></td><td>Approve or deny a pending tool call</td></tr>
+            <tr><td><code>claw/compact</code></td><td>Trigger session compaction</td></tr>
+            <tr><td><code>shutdown</code></td><td>Gracefully shut down the server</td></tr>
+          </table>
+
+          <h3>VS Code Extension</h3>
+          <p>A VS Code extension scaffold is included at <code>extensions/vscode/</code>. It provides:</p>
+          <ul>
+            <li><strong>Chat panel</strong> &mdash; Webview-based conversation UI in the activity bar</li>
+            <li><strong>Tool call tree</strong> &mdash; Real-time view of tool execution status</li>
+            <li><strong>Permission UI</strong> &mdash; Approve/deny tool calls from the editor</li>
+            <li><strong>Configuration</strong> &mdash; Server URL, auto-approve read-only, diff preview toggle</li>
+          </ul>
+
+          <h3>Vim Mode</h3>
+          <p>Toggle vim keybindings in the REPL with <code>/vim</code>. Supports:</p>
+          <ul>
+            <li><strong>Normal mode</strong> &mdash; <code>h</code>/<code>l</code> movement, <code>w</code>/<code>b</code> word navigation, <code>0</code>/<code>$</code> line start/end, <code>x</code> delete, <code>d</code> delete line, <code>C</code> change to end</li>
+            <li><strong>Insert mode</strong> &mdash; <code>i</code>, <code>a</code>, <code>A</code>, <code>I</code> entry points</li>
+            <li><strong>Visual mode</strong> &mdash; <code>v</code> to select, <code>y</code> to yank, <code>d</code> to delete selection</li>
+            <li><strong>Repeat counts</strong> &mdash; <code>3l</code> moves right 3, <code>2w</code> jumps 2 words</li>
+          </ul>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- ARCHITECTURE -->
+        <!-- ════════════════════════════════════════════════ -->
+
+        <section id="architecture">
+          <h2>Crate Structure</h2>
+          <p>Sahil-code is organized as a Cargo workspace with four crates plus an extension directory:</p>
+          <pre><code>sahil-code/
+  Cargo.toml              # Workspace root
+  crates/
+    core/                 # Conversation runtime, sessions, permissions,
+                          # config, compaction, cost, security, plugins,
+                          # agents, server types
+    providers/            # Anthropic, OpenAI, Ollama API clients,
+                          # SSE parser, fallback, capabilities
+    tools/                # 9 built-in tools, Tool trait, ToolRegistry,
+                          # middleware stack
+    cli/                  # Binary entry point, REPL, arg parsing,
+                          # markdown renderer, line editor, vim mode
+  extensions/
+    vscode/               # VS Code extension (TypeScript)</code></pre>
+
+          <h3>Key Traits</h3>
+          <table>
+            <tr><th>Trait</th><th>Crate</th><th>Purpose</th></tr>
+            <tr><td><code>ApiClient</code></td><td>core</td><td>Abstraction for LLM providers</td></tr>
+            <tr><td><code>ToolExecutor</code></td><td>core</td><td>Abstraction for tool execution</td></tr>
+            <tr><td><code>Tool</code></td><td>tools</td><td>Individual tool implementation</td></tr>
+            <tr><td><code>PermissionPrompter</code></td><td>core</td><td>Interactive permission decisions</td></tr>
+            <tr><td><code>PreHook</code> / <code>PostHook</code></td><td>tools</td><td>Middleware around tool execution</td></tr>
+          </table>
+
+          <h3>Test Coverage</h3>
+          <p>119 tests across all crates covering: tool execution, session serialization, permission logic, compaction, config merging, provider message parsing, security sandboxing, plugin loading, agent orchestration, server types, and vim mode.</p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <p>Built by <a href="https://github.com/SahilBamb">Sahil Bamb</a> &middot; Open source under MIT</p>
+  </footer>
+
+  <script>
+    // Highlight active sidebar link on scroll
+    const sections = document.querySelectorAll('.docs-content section[id]');
+    const sidebarLinks = document.querySelectorAll('.docs-sidebar a');
+
+    function updateActive() {
+      let current = '';
+      for (const section of sections) {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) {
+          current = section.id;
+        }
+      }
+      sidebarLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  </script>
+</body>
+</html>
